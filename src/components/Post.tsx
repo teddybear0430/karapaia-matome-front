@@ -15,7 +15,10 @@ const PostItem: React.FC<{ post: Post }> = (postItem) => {
         {postItem.post.title}
       </a>
       <div className="flex justify-start my-2 text-sm">
-        <span>コメント数: {postItem.post.comment}</span>
+        <span>
+          コメント数:
+          <span className={postItem.post.comment >= 50 ? 'text-red-600 font-bold' : ''}> {postItem.post.comment}</span>
+        </span>
         <span className="ml-2">投稿日: {postItem.post.createdAt}</span>
       </div>
     </div>
