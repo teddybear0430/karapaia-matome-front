@@ -3,10 +3,10 @@ import { Post } from '../types/post';
 
 const PostItem: React.FC<{ post: Post }> = (postItem) => {
   return (
-    <div className="my-3 border-b border-gray-500">
+    <div className="my-3 border-b border-gray">
       <div className="flex justify-start mb-1 text-sm">
         {postItem.post.archives.map((cat, i) => (
-          <a key={i} href={cat.catUrl} className="mr-4 text-blue hover:underline hover:text-gray-500">
+          <a key={i} href={cat.catUrl} className="mr-4 text-blue hover:underline hover:text-gray">
             {cat.catName}
           </a>
         ))}

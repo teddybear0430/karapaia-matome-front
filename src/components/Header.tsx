@@ -16,7 +16,7 @@ const Header = () => {
       <Link href="/">
         <a className="text-2xl text-blue">カラパイアまとめ</a>
       </Link>
-      <span>{todayDate()}</span>
+      <span className="text-gray">{todayDate()}</span>
     </header>
   );
 };
