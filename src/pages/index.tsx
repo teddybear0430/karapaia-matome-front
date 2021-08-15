@@ -13,7 +13,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
       </Head>
       <main>
         {posts.map((post: Post, i: number) => (
-          <PostItem post={post} key={i} />
+          <PostItem key={i} post={post} />
         ))}
       </main>
     </div>
