@@ -3,7 +3,7 @@ import Head from 'next/head';
 import SelectBox from '../components/SelectBox';
 import PostItem from '../components/Post';
 import { Post } from '../types/post';
-import { options } from '../utils/options';
+import { options } from '../config/config';
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts }) => {
   return (
