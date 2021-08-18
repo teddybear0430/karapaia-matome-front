@@ -1,3 +1,7 @@
+export const siteConfig = {
+  siteName: 'カラパイアまとめ',
+} as const;
+
 export const options = [
   {
     label: '新しい順',
