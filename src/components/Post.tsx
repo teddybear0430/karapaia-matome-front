@@ -11,15 +11,15 @@ const PostItem: React.FC<{ post: Post }> = ({ post }) => {
           </a>
         ))}
       </div>
-      <a href={post.url} className="hover:underline text-blue">
+      <a href={post.url} className="hover:underline text-blue" target="_blank" rel="noreferrer noopener">
         {post.title}
       </a>
-      <div className="flex justify-start my-2 text-sm">
-        <span>
+      <div className="flex items-baseline justify-start my-2">
+        <span className="text-sm">
           コメント数:
-          <span className={post.comment >= 50 ? 'text-red-600 font-bold' : ''}> {post.comment}</span>
+          <span className={post.comment >= 50 ? 'text-red-600 font-bold text-base' : ''}> {post.comment}</span>
         </span>
-        <span className="ml-2">投稿日: {post.createdAt}</span>
+        <span className="ml-2 text-sm">投稿日: {post.createdAt}</span>
       </div>
     </div>
   );
