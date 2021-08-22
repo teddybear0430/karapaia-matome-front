@@ -6,7 +6,7 @@ module.exports = {
   // ビルド生成時の未使用のスタイルを除外し、パフォーマンスの最適化を行える
   purge: {
     content: ['./src/pages/**/*.{tsx}', './src/components/**/*.{tsx}'],
-    // enabled: true,
+    enabled: true,
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
