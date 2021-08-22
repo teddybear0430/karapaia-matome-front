@@ -4,7 +4,10 @@
 module.exports = {
   mode: 'all',
   // ビルド生成時の未使用のスタイルを除外し、パフォーマンスの最適化を行える
-  purge: ['./src/**/*.{tsx}'],
+  purge: {
+    content: ['./src/**/*.{tsx}'],
+    enabled: true,
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
