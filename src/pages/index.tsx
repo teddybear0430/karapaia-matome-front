@@ -1,11 +1,22 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import type { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
 import Head from 'next/head';
 import SelectBox from '../components/SelectBox';
 import PostItem from '../components/Post';
 import { Post } from '../types/post';
 import { options } from '../config/config';
+import postsSlice from '../posts/slice';
+import { StoreState } from '../posts/store';
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts }) => {
+  const dispatch = useDispatch();
+  const postsState = useSelector((state: StoreState) => state.posts);
+
+  useEffect(() => {
+    dispatch(postsSlice.actions.setPosts(posts));
+  }, []);
+
   return (
     <>
       <Head>
@@ -15,7 +26,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
         <div className="flex justify-end">
           <SelectBox options={options} />
         </div>
-        {posts.map((post: Post, i: number) => (
+        {postsState.posts.map((post: Post, i: number) => (
           <PostItem key={i} post={post} />
         ))}
       </main>
