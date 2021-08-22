@@ -3,8 +3,8 @@ import type { AppProps } from 'next/app';
 import 'tailwindcss/tailwind.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { siteConfig } from '../config/config';
-import createStore from '../posts/store';
+import { siteConfig } from '../../config/config';
+import createStore from '../../posts/store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { siteName } = siteConfig;

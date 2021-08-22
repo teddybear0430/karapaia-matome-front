@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import postsSlice from '../posts/slice';
-import { StoreState } from '../posts/store';
+import postsSlice from '../../posts/slice';
+import { StoreState } from '../../posts/store';
 
 type Options = {
   label: string;

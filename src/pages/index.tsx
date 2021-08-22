@@ -4,10 +4,10 @@ import type { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
 import Head from 'next/head';
 import SelectBox from '../components/SelectBox';
 import PostItem from '../components/Post';
-import { Post } from '../types/post';
-import { options } from '../config/config';
-import postsSlice from '../posts/slice';
-import { StoreState } from '../posts/store';
+import { Post } from '../../types/post';
+import { options } from '../../config/config';
+import postsSlice from '../../posts/slice';
+import { StoreState } from '../../posts/store';
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts }) => {
   const dispatch = useDispatch();
@@ -35,6 +35,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+  console.log(`${process.env.ENDPOINT}/posts`)
   const res = await fetch(`${process.env.ENDPOINT}/posts`);
   const posts: Post[] = await res.json();
 

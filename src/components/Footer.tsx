@@ -1,5 +1,5 @@
 import React from 'react';
-import { dateUtil } from '../utils/date-util';
+import { dateUtil } from '../../utils/date-util';
 
 const Footer: React.FC<{ siteName: string }> = ({ siteName }) => {
   const { getYear } = dateUtil();
