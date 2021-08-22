@@ -1,6 +1,6 @@
 import { Provider } from 'react-redux';
 import type { AppProps } from 'next/app';
-import 'tailwindcss/tailwind.css';
+import '../../style/global.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { siteConfig } from '../../config/config';
