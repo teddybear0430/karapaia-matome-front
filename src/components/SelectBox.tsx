@@ -2,20 +2,19 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import postsSlice from '../../posts/slice';
 import { StoreState } from '../../posts/store';
+import { SortStatus } from '../../types/sort-status';
 
 type Options = {
   label: string;
   value: string;
 }[];
 
-type optionTypes = 'desc' | 'asc' | 'commentDesc' | 'commentAsc';
-
 const SelectBox: React.FC<{ options: Options }> = ({ options }) => {
   const dispatch = useDispatch();
   const postsState = useSelector((state: StoreState) => state.posts);
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    const eventValue = event.target.value as optionTypes;
+    const eventValue = event.target.value as SortStatus;
 
     if (eventValue === 'desc') {
       dispatch(postsSlice.actions.sortDesc(postsState.posts));

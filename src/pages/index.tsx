@@ -12,10 +12,14 @@ import { StoreState } from '../../posts/store';
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts }) => {
   const dispatch = useDispatch();
   const postsState = useSelector((state: StoreState) => state.posts);
+  const sortStatus = useSelector((state: StoreState) => state.posts.sortStatus);
 
   useEffect(() => {
-    dispatch(postsSlice.actions.setPosts(posts));
-  }, []);
+    if (sortStatus === 'desc') {
+      console.log(posts);
+      dispatch(postsSlice.actions.setPosts(posts));
+    }
+  }, [postsState.posts]);
 
   return (
     <>
@@ -35,7 +39,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  console.log(`${process.env.ENDPOINT}/posts`)
+  console.log(`${process.env.ENDPOINT}/posts`);
   const res = await fetch(`${process.env.ENDPOINT}/posts`);
   const posts: Post[] = await res.json();
 

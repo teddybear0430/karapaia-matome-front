@@ -1,11 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Post } from '../types/post';
+import { SortStatus } from '../types/sort-status';
 
 export type PostsState = {
+  sortStatus: SortStatus;
   posts: Post[];
 };
 
 export const initialState: PostsState = {
+  sortStatus: 'desc',
   posts: [],
 };
 
@@ -13,6 +16,7 @@ const postsSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {
+    // デフォルトのソート状態は日付の降順
     setPosts: (state, action: PayloadAction<Post[]>) => ({
       ...state,
       posts: action.payload,
@@ -27,6 +31,7 @@ const postsSlice = createSlice({
 
       return {
         ...state,
+        sortStatus: 'desc',
         posts: newPosts,
       };
     },
@@ -39,6 +44,7 @@ const postsSlice = createSlice({
 
       return {
         ...state,
+        sortStatus: 'asc',
         posts: newPosts,
       };
     },
@@ -51,6 +57,7 @@ const postsSlice = createSlice({
 
       return {
         ...state,
+        sortStatus: 'commentDesc',
         posts: newPosts,
       };
     },
@@ -63,6 +70,7 @@ const postsSlice = createSlice({
 
       return {
         ...state,
+        sortStatus: 'commentAsc',
         posts: newPosts,
       };
     }
