@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import type { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -16,9 +16,12 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
 
   useEffect(() => {
     if (sortStatus === 'desc') {
-      console.log(posts);
       dispatch(postsSlice.actions.setPosts(posts));
     }
+  }, [postsState.posts]);
+
+  const sortedPosts = useMemo(() => {
+    return postsState.posts;
   }, [postsState.posts]);
 
   return (
@@ -30,7 +33,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
         <div className="flex justify-end">
           <SelectBox options={options} />
         </div>
-        {postsState.posts.map((post: Post, i: number) => (
+        {sortedPosts.map((post: Post, i: number) => (
           <PostItem key={i} post={post} />
         ))}
       </main>
@@ -39,7 +42,6 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  console.log(`${process.env.ENDPOINT}/posts`);
   const res = await fetch(`${process.env.ENDPOINT}/posts`);
   const posts: Post[] = await res.json();
 
