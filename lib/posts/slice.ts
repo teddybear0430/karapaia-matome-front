@@ -23,9 +23,7 @@ const postsSlice = createSlice({
     }),
     sortDesc: (state, action: PayloadAction<Post[]>) => {
       // MEMO: 配列をコピーしてから変更しないとエラーが発生した。
-      const copy = [...action.payload];
-
-      const newPosts = copy.sort((a, b) => {
+      const newPosts = action.payload.slice().sort((a, b) => {
         return a.createdAt < b.createdAt ? 1 : -1;
       });
 
@@ -36,9 +34,7 @@ const postsSlice = createSlice({
       };
     },
     sortAsc: (state, action: PayloadAction<Post[]>) => {
-      const copy = [...action.payload];
-
-      const newPosts = copy.sort((a, b) => {
+      const newPosts = action.payload.slice().sort((a, b) => {
         return a.createdAt < b.createdAt ? -1 : 1;
       });
 
@@ -49,9 +45,7 @@ const postsSlice = createSlice({
       };
     },
     commentDesc: (state, action: PayloadAction<Post[]>) => {
-      const copy = [...action.payload];
-
-      const newPosts = copy.sort((a, b) => {
+      const newPosts = action.payload.slice().sort((a, b) => {
         return a.comment < b.comment ? 1 : -1;
       });
 
@@ -62,9 +56,7 @@ const postsSlice = createSlice({
       };
     },
     commentAsc: (state, action: PayloadAction<Post[]>) => {
-      const copy = [...action.payload];
-
-      const newPosts = copy.sort((a, b) => {
+      const newPosts = action.payload.slice().sort((a, b) => {
         return a.comment < b.comment ? -1 : 1;
       });
 
@@ -73,7 +65,7 @@ const postsSlice = createSlice({
         sortStatus: 'commentAsc',
         posts: newPosts,
       };
-    }
+    },
   },
 });
 
