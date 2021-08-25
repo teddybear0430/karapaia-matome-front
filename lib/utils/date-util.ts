@@ -1,4 +1,6 @@
 export const dateUtil = () => {
+  const weekChars = ['日', '月', '火', '水', '木', '金', '土'];
+
   const todayDate = () => {
     const today = new Date();
     const year = today.getFullYear();
@@ -13,8 +15,15 @@ export const dateUtil = () => {
     return date.getFullYear().toString();
   };
 
+  const getWeekChars = (dateStr: string) => {
+    const date = new Date(dateStr);
+    const weekDay = date.getDay();
+    return `(${weekChars[weekDay]})`;
+  };
+
   return {
     todayDate,
     getYear,
+    getWeekChars,
   };
 };

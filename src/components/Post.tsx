@@ -1,7 +1,10 @@
 import React from 'react';
+import { dateUtil } from '../../lib/utils/date-util';
 import { Post } from '../../types/post';
 
 const PostItem: React.FC<{ post: Post }> = ({ post }) => {
+  const { getWeekChars } = dateUtil();
+
   return (
     <div className="my-3 border-b border-gray">
       <div className="flex justify-start mb-1 text-sm">
@@ -19,7 +22,7 @@ const PostItem: React.FC<{ post: Post }> = ({ post }) => {
           コメント数:
           <span className={post.comment >= 50 ? 'text-red-600 font-bold text-base' : ''}> {post.comment}</span>
         </span>
-        <span className="ml-2 text-sm">投稿日: {post.createdAt}</span>
+        <span className="ml-2 text-sm">投稿日: {post.createdAt}{getWeekChars(post.createdAt)}</span>
       </div>
     </div>
   );
