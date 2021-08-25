@@ -1,27 +1,19 @@
-import { useEffect, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import type { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
 import Head from 'next/head';
 import SelectBox from '../components/SelectBox';
 import PostItem from '../components/Post';
 import { Post } from '../../types/post';
 import { options } from '../../config/config';
-import postsSlice from '../../posts/slice';
-import { StoreState } from '../../posts/store';
+import { usePosts } from '../../lib/use-posts';
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts }) => {
-  const dispatch = useDispatch();
-  const postsState = useSelector((state: StoreState) => state.posts);
-  const sortStatus = useSelector((state: StoreState) => state.posts.sortStatus);
+  const { dispatch, postsState, sortStatus, postsSlice, sortedPosts } = usePosts();
 
   useEffect(() => {
     if (sortStatus === 'desc') {
       dispatch(postsSlice.actions.setPosts(posts));
     }
-  }, [postsState.posts]);
-
-  const sortedPosts = useMemo(() => {
-    return postsState.posts;
   }, [postsState.posts]);
 
   return (

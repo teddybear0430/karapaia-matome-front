@@ -4,7 +4,7 @@ import '../../style/global.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { siteConfig } from '../../config/config';
-import createStore from '../../posts/store';
+import createStore from '../../lib/posts/store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { siteName } = siteConfig;

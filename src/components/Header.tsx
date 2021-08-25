@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { dateUtil } from '../../utils/date-util';
+import { dateUtil } from '../../lib/utils/date-util';
 
 const Header: React.FC<{ siteName: string }> = ({ siteName }) => {
   const { todayDate } = dateUtil();

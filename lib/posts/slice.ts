@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Post } from '../types/post';
-import { SortStatus } from '../types/sort-status';
+import { Post } from '../../types/post';
+import { SortStatus } from '../../types/sort-status';
 
 export type PostsState = {
   sortStatus: SortStatus;
