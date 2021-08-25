@@ -9,10 +9,10 @@ on:
         description: branch|tag|SHA to checkout
         default: 'main'
         required: true
-  schedule:
-    # 日本時間の朝9:10に毎日実行、UTCでしか指定できない？
-    # 実行の際に参照されるブランチはdefaultで指定したものが使用される
-    - cron:  '10 0 * * *'
+  # schedule:
+  #   # 日本時間の朝9:10に毎日実行、UTCでしか指定できない？
+  #   # 実行の際に参照されるブランチはdefaultで指定したものが使用される
+  #   - cron:  '10 0 * * *'
 
 jobs:
   deploy-website:
