@@ -5,7 +5,8 @@ import SelectBox from '../components/SelectBox';
 import PostItem from '../components/Post';
 import { Post } from '../../types/post';
 import { options } from '../../config/config';
-import { usePosts } from '../../lib/use-posts';
+import { usePosts } from '../../lib/hooks/use-posts';
+import { dateUtil } from '../../lib/utils/date-util';
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts }) => {
   const { dispatch, postsState, sortStatus, postsSlice, sortedPosts } = usePosts();
@@ -16,13 +17,16 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
     }
   }, [postsState.posts]);
 
+  const { todayDate } = dateUtil();
+
   return (
     <>
       <Head>
         <title>カラパイアまとめ</title>
       </Head>
       <main>
-        <div className="flex justify-end">
+        <div className="flex justify-between">
+          <span className="text-gray dark:text-white">{todayDate()}</span>
           <SelectBox options={options} />
         </div>
         {sortedPosts.map((post: Post, i: number) => (

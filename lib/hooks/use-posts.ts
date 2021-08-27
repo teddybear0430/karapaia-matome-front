@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import postsSlice from './posts/slice';
-import { StoreState } from './posts/store';
-import { SortStatus } from '../types/sort-status';
+import postsSlice from '../posts/slice';
+import { StoreState } from '../store';
+import { SortStatus } from '../../types/sort-status';
 
 export const usePosts = () => {
   const dispatch = useDispatch();

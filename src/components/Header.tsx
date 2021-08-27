@@ -1,18 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
-import { dateUtil } from '../../lib/utils/date-util';
+import ToggleThemeMode from './ToggleThemeMode';
 
 const Header: React.FC<{ siteName: string }> = ({ siteName }) => {
-  const { todayDate } = dateUtil();
-
   return (
     <header className="flex items-center justify-between py-3 font-bold">
       <h1>
         <Link href="/">
-          <a className="text-2xl text-blue">{siteName}</a>
+          <a className="text-2xl text-blue dark:text-indigo-500">{siteName}</a>
         </Link>
       </h1>
-      <span className="text-gray">{todayDate()}</span>
+      <ToggleThemeMode />
     </header>
   );
 };

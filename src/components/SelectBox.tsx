@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePosts } from '../../lib/use-posts';
+import { usePosts } from '../../lib/hooks/use-posts';
 
 type Options = {
   label: string;
@@ -7,7 +7,7 @@ type Options = {
 }[];
 
 const SelectBox: React.FC<{ options: Options }> = ({ options }) => {
-  const { handleChange} = usePosts();
+  const { handleChange } = usePosts();
 
   return (
     <select id="posts-select" name="posts" className="border border-gray" onChange={handleChange}>

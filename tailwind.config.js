@@ -7,12 +7,13 @@ module.exports = {
   purge: {
     content: ['./src/pages/**/*.tsx', './src/components/**/*.tsx'],
   },
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         blue: '#0000cc',
         gray: '#666',
+        bodyDark: '#191717'
       },
     },
   },
