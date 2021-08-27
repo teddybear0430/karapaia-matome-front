@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <Provider store={createStore()}>
-      <div className="w-10/12 mx-auto lg:w-7/12">
+      <div className="w-11/12 mx-auto lg:w-7/12">
         <Header siteName={siteName} />
         <Component {...pageProps} />
         <Footer siteName={siteName} />
