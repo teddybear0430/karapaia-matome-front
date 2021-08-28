@@ -7,7 +7,7 @@ const Header: React.FC<{ siteName: string }> = ({ siteName }) => {
     <header className="flex items-center justify-between py-3 font-bold">
       <h1>
         <Link href="/">
-          <a className="text-2xl text-blue dark:text-indigo-500">{siteName}</a>
+          <a className="text-2xl text-blue dark:text-darkmodeBlue">{siteName}</a>
         </Link>
       </h1>
       <ToggleThemeMode />

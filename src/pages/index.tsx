@@ -26,7 +26,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
       </Head>
       <main>
         <div className="flex justify-between">
-          <span className="text-gray dark:text-white">{todayDate()}</span>
+          <span className="text-gray dark:text-darkmodeWhite">{todayDate()}</span>
           <SelectBox options={options} />
         </div>
         {sortedPosts.map((post: Post, i: number) => (

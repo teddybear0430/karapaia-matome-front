@@ -14,7 +14,7 @@ const ToggleThemeMode = () => {
   return (
     <>
       <button
-        className="block w-10 h-auto p-2 rounded-full outline-none cursor-pointer hover:bg-black hover:bg-opacity-10 :dark:hover:bg-white :dark:hover:bg-opacity-20 transition-all duration-500"
+        className="block w-10 h-auto p-2 rounded-full outline-none cursor-pointer hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-20 transition-all duration-500"
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       >
         {mounted && (
@@ -22,7 +22,7 @@ const ToggleThemeMode = () => {
             {theme === 'dark' ? (
               <FontAwesomeIcon className="text-yellow-500" icon={faMoon} />
             ) : (
-              <FontAwesomeIcon className="w-5 text-yellow-300" icon={faSun} size="lg" />
+              <FontAwesomeIcon className="w-5 text-yellow-400" icon={faSun} size="lg" />
             )}
           </>
         )}

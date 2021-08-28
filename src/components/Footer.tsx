@@ -7,10 +7,10 @@ const Footer: React.FC<{ siteName: string }> = ({ siteName }) => {
 
   return (
     <footer className="p-3 mt-6">
-      <p className="text-sm text-center dark:text-white">
+      <p className="text-sm text-center dark:text-darkmodeWhite">
         {getYear()} {siteName}
         {/* <Link href="/about">                                                                           */}
-        {/*   <a className="pl-2 font-bold text-blue dark:text-indigo-500">このサイトについて</a> */}
+        {/*   <a className="pl-2 font-bold text-blue dark:text-darkmodeBlue">このサイトについて</a> */}
         {/* </Link>                                                                                        */}
       </p>
     </footer>
