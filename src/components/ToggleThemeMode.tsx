@@ -1,11 +1,11 @@
 import React from 'react';
-import { useDarkmode } from '../../lib/hooks/use-darkmode';
+import { useTheme } from 'next-themes';
 
 const ToggleThemeMode = () => {
-  const { darkmodeState, handleChange } = useDarkmode();
+  const { theme, setTheme } = useTheme();
 
   const toggleSvg = () => {
-    if (!darkmodeState.darkMode) {
+    if (theme !== 'dark') {
       return (
         <>
           <svg
@@ -51,8 +51,8 @@ const ToggleThemeMode = () => {
   return (
     <>
       <button
-        className="block w-10 h-auto p-2 rounded-full cursor-pointer hover:bg-black hover:bg-opacity-10 dark:hover:bg-white dark:hover:bg-opacity-20 transition-all duration-500"
-        onClick={handleChange}
+        className="block w-10 h-auto p-2 rounded-full cursor-pointer hover:bg-black hover:bg-opacity-10 dark:hover:bg-white dark:hover:bg-opacity-20 transition-all duration-500 ease-out"
+        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       >
         {toggleSvg()}
       </button>

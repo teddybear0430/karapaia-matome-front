@@ -13,7 +13,7 @@ class MyDocument extends Document {
           <meta name="description" content="カラパイアのまとめサイトです。" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <body>
+        <body className="bg-white dark:bg-black dark:bg-opacity-90 transition-all duration-200">
           <Main />
           <NextScript />
         </body>

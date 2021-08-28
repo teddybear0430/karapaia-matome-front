@@ -1,4 +1,5 @@
 import { Provider } from 'react-redux';
+import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
 import '../../style/global.css';
 import Header from '../components/Header';
@@ -10,15 +11,15 @@ function MyApp({ Component, pageProps }: AppProps) {
   const { siteName } = siteConfig;
 
   return (
-    <Provider store={createStore()}>
-      <div className="bg-white dark:bg-black dark:bg-opacity-90 transition-all duration-200">
+    <ThemeProvider attribute="class">
+      <Provider store={createStore()}>
         <div className="w-11/12 mx-auto lg:w-7/12">
           <Header siteName={siteName} />
           <Component {...pageProps} />
           <Footer siteName={siteName} />
         </div>
-      </div>
-    </Provider>
+      </Provider>
+    </ThemeProvider>
   );
 }
 export default MyApp;
