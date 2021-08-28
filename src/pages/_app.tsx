@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class">
       <Provider store={createStore()}>
-        <div className="w-11/12 mx-auto lg:w-7/12">
+        <div className="flex flex-col w-11/12 h-screen mx-auto lg:w-7/12">
           <Header siteName={siteName} />
           <Component {...pageProps} />
           <Footer siteName={siteName} />
