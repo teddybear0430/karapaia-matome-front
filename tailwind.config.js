@@ -6,6 +6,9 @@ module.exports = {
   // ビルド生成時の未使用のスタイルを除外し、パフォーマンスの最適化を行える
   purge: {
     content: ['./src/pages/**/*.tsx', './src/components/**/*.tsx'],
+    options: {
+      safelist: ['dark'],
+    },
   },
   darkMode: 'class',
   theme: {
@@ -13,7 +16,6 @@ module.exports = {
       colors: {
         blue: '#0000cc',
         gray: '#666',
-        bodyDark: '#191717'
       },
     },
   },
