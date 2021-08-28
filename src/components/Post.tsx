@@ -1,4 +1,7 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { TwitterShareButton } from 'react-share';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { dateUtil } from '../../lib/utils/date-util';
 import { Post } from '../../types/post';
 
@@ -20,12 +23,17 @@ const PostItem: React.FC<{ post: Post }> = ({ post }) => {
       </div>
       <a
         href={post.url}
-        className="hover:underline text-blue dark:text-darkmodeBlue"
+        className="ml-2 hover:underline text-blue dark:text-darkmodeBlue"
         target="_blank"
         rel="noreferrer noopener"
       >
         {post.title}
       </a>
+      <span className="ml-2">
+        <TwitterShareButton url={post.url}>
+          <FontAwesomeIcon icon={faTwitter} />
+        </TwitterShareButton>
+      </span>
       <div className="flex items-baseline justify-start my-2">
         <span className="text-sm dark:text-darkmodeWhite">
           コメント数:
