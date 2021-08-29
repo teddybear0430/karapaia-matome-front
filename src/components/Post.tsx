@@ -10,16 +10,24 @@ const PostItem: React.FC<{ post: Post }> = ({ post }) => {
 
   return (
     <div className="my-3 border-b border-gray">
-      <div className="flex justify-start mb-1 text-sm">
-        {post.archives.map((cat, i) => (
-          <a
-            key={i}
-            href={cat.catUrl}
-            className="mr-4 text-blue dark:text-darkmodeBlue hover:underline hover:text-gray dark:hover:text-indigo-200"
-          >
-            {cat.catName}
-          </a>
-        ))}
+      <div className="flex items-center justify-between mb-1 text-sm">
+        <div>
+          {post.archives.map((cat, i) => (
+            <a
+              key={i}
+              href={cat.catUrl}
+              className="mr-4 text-blue dark:text-darkmodeBlue hover:underline hover:text-gray dark:hover:text-indigo-200"
+            >
+              {cat.catName}
+            </a>
+          ))}
+        </div>
+        <TwitterShareButton url={post.url}>
+          <FontAwesomeIcon
+            icon={faTwitter}
+            className="text-2xl hover:text-yellow-400 dark:hover:text-yellow-500 transition-all duration-200"
+          />
+        </TwitterShareButton>
       </div>
       <a
         href={post.url}
@@ -29,11 +37,6 @@ const PostItem: React.FC<{ post: Post }> = ({ post }) => {
       >
         {post.title}
       </a>
-      <span className="ml-2">
-        <TwitterShareButton url={post.url}>
-          <FontAwesomeIcon icon={faTwitter} />
-        </TwitterShareButton>
-      </span>
       <div className="flex items-baseline justify-start my-2">
         <span className="text-sm dark:text-darkmodeWhite">
           コメント数:

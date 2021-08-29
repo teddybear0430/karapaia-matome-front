@@ -16,7 +16,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
     <>
       <CustomHead title={siteName} />
       <main>
-        <div className="flex justify-between">
+        <div className="flex justify-between mb-9">
           <span className="dark:text-darkmodeWhite">{todayDate()}</span>
           <SelectBox options={options} />
         </div>
