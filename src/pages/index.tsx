@@ -1,21 +1,20 @@
 import type { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
-import Head from 'next/head';
+import CustomHead from '../components/CustomHead';
 import SelectBox from '../components/SelectBox';
 import PostItem from '../components/Post';
 import { Post } from '../../types/post';
-import { options } from '../../config/config';
+import { siteConfig, options } from '../../config/config';
 import { usePosts } from '../../lib/hooks/use-posts';
 import { dateUtil } from '../../lib/utils/date-util';
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts }) => {
+  const { siteName } = siteConfig;
   const { sortedPosts } = usePosts(posts);
   const { todayDate } = dateUtil();
 
   return (
     <>
-      <Head>
-        <title>カラパイアまとめ</title>
-      </Head>
+      <CustomHead title={siteName} />
       <main>
         <div className="flex justify-between">
           <span className="dark:text-darkmodeWhite">{todayDate()}</span>

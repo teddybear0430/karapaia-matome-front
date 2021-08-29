@@ -1,12 +1,14 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
+import CustomHead from '../components/CustomHead';
+import { siteConfig } from '../../config/config';
 
 const About: NextPage = () => {
+  const { siteName } = siteConfig;
+  const title = `${siteName} | このサイトについて`;
+
   return (
     <>
-      <Head>
-        <title>カラパイアまとめ | このサイトについて</title>
-      </Head>
+      <CustomHead title={title} />
       <main>
         <h2 className="mb-3 font-bold border-b-2 border-black dark:border-darkmodeWhite leading-8">
           このサイトについて
