@@ -23,7 +23,7 @@ const PostItem: React.FC<{ post: Post }> = ({ post }) => {
       </div>
       <a
         href={post.url}
-        className="ml-2 hover:underline text-blue dark:text-darkmodeBlue"
+        className="hover:underline text-blue dark:text-darkmodeBlue"
         target="_blank"
         rel="noreferrer noopener"
       >
