@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import type { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
 import Head from 'next/head';
 import SelectBox from '../components/SelectBox';
@@ -9,14 +8,7 @@ import { usePosts } from '../../lib/hooks/use-posts';
 import { dateUtil } from '../../lib/utils/date-util';
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts }) => {
-  const { dispatch, postsState, sortStatus, postsSlice, sortedPosts } = usePosts();
-
-  useEffect(() => {
-    if (sortStatus === 'desc') {
-      dispatch(postsSlice.actions.setPosts(posts));
-    }
-  }, [postsState.posts]);
-
+  const { sortedPosts } = usePosts(posts);
   const { todayDate } = dateUtil();
 
   return (
