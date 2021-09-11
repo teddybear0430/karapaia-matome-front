@@ -2,11 +2,14 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TwitterShareButton } from 'react-share';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { dateUtil } from '../../lib/utils/date-util';
 import { Post } from '../../types/post';
+import { usePost } from '../../lib/hooks/use-post';
 
 const PostItem: React.FC<{ post: Post }> = ({ post }) => {
   const { getWeekChars } = dateUtil();
+  const { readed, handleClick } = usePost(post);
 
   return (
     <div className="my-3 border-b border-gray">
@@ -34,21 +37,31 @@ const PostItem: React.FC<{ post: Post }> = ({ post }) => {
         className="hover:underline text-blue dark:text-darkmodeBlue"
         target="_blank"
         rel="noreferrer noopener"
+        onClick={handleClick}
       >
         {post.title}
       </a>
-      <div className="flex items-baseline justify-start my-2">
-        <span className="text-sm dark:text-darkmodeWhite">
-          コメント数:
-          <span className={post.comment >= 50 ? 'text-red-600 font-bold text-base dark:text-red-400' : ''}>
-            {' '}
-            {post.comment}
+      <div className="flex items-end justify-between my-2">
+        <div>
+          <span className="block text-sm dark:text-darkmodeWhite lg:inline">
+            コメント数:
+            <span className={post.comment >= 50 ? 'text-red-600 font-bold text-base dark:text-red-400' : ''}>
+              {' '}
+              {post.comment}
+            </span>
           </span>
-        </span>
-        <span className="ml-2 text-sm dark:text-darkmodeWhite">
-          投稿日: {post.createdAt}
-          {getWeekChars(post.createdAt)}
-        </span>
+          <span className="block text-sm lg:ml-2 dark:text-darkmodeWhite lg:inline">
+            投稿日: {post.createdAt}
+            {getWeekChars(post.createdAt)}
+          </span>
+        </div>
+        {readed && (
+          <div>
+            <span className="block text-sm lg:inline">
+              既読 <FontAwesomeIcon className="text-green-500 align-text-top" icon={faCheck} />
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );
