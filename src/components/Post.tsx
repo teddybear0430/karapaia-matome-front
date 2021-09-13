@@ -37,7 +37,7 @@ const PostItem: React.FC<{ post: Post }> = ({ post }) => {
         className="hover:underline text-blue dark:text-darkmodeBlue"
         target="_blank"
         rel="noreferrer noopener"
-        onClick={handleClick}
+        onClick={() => handleClick(post)}
       >
         {post.title}
       </a>

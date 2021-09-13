@@ -11,6 +11,26 @@ export const usePosts = (posts?: Post[]) => {
   const sortStatus = useSelector((state: StoreState) => state.posts.sortStatus);
 
   useEffect(() => {
+    if (!posts) return;
+
+    // 表示されている記事リンクで既読済みの記事のuuidを格納する配列を生成
+    const findReadedPosts = posts.filter((post) => post.uuid === localStorage.getItem(post.uuid));
+    const findUuids = findReadedPosts.map((post) => post.uuid);
+
+    // 既読済みの記事のuuidのみをlocalStorageから取得して、取得したuuidを格納する配列を生成
+    const localStorageUuids = Object.keys(localStorage).filter((uuid) => uuid.match(/\d+/g));
+
+    // 削除対象のuuidのみを含む配列を生成
+    const deleteUuids = localStorageUuids.filter((uuid) => findUuids.indexOf(uuid) === -1);
+
+    if (deleteUuids.length === 0) return;
+
+    for (const uuid of deleteUuids) {
+      localStorage.removeItem(uuid);
+    }
+  }, [posts]);
+
+  useEffect(() => {
     // ソート状態が日付の降順に設定かつ、初回表示時のみ処理を実行する
     if (sortStatus === 'desc' && posts) {
       dispatch(postsSlice.actions.setPosts(posts));
