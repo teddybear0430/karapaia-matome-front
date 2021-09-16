@@ -8,13 +8,13 @@ import { usePosts } from '../../lib/hooks/use-posts';
 import { dateUtil } from '../../lib/utils/date-util';
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts }) => {
-  const { siteName } = siteConfig;
+  const { siteName, siteUrl, description } = siteConfig;
   const { sortedPosts } = usePosts(posts);
   const { todayDate } = dateUtil();
 
   return (
     <>
-      <CustomHead title={siteName} />
+      <CustomHead title={siteName} url={siteUrl} description={description} />
       <main>
         <div className="flex justify-between mb-9">
           <span className="dark:text-darkmodeWhite">{todayDate()}</span>

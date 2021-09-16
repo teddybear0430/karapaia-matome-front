@@ -1,5 +1,7 @@
 export const siteConfig = {
   siteName: 'カラパイアまとめ',
+  siteUrl: 'https://karapaia-matome-front.vercel.app/',
+  description: 'カラパイアの更新情報を提供しているまとめサイトです。',
 } as const;
 
 export const options = [
