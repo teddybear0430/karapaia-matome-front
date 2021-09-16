@@ -3,8 +3,8 @@ import Head from 'next/head';
 
 type Props = {
   title: string;
-  url: string;
-  description: string;
+  url?: string;
+  description?: string;
 };
 
 const CustomHead: React.FC<Props> = ({ title, url, description }) => {
