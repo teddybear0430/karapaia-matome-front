@@ -14,10 +14,7 @@ export const usePost = (post: Post) => {
   };
 
   useEffect(() => {
-    // 投稿の存在と既読じゃないかのチェック
-    if (post && !readed) {
-      setReaded(isReaded(post.uuid));
-    }
+    if (post) setReaded(isReaded(post.uuid));
   }, []);
 
   return {
