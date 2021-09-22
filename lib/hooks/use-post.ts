@@ -15,7 +15,7 @@ export const usePost = (post: Post) => {
 
   useEffect(() => {
     if (post) setReaded(isReaded(post.uuid));
-  }, []);
+  }, [post]);
 
   return {
     readed,
