@@ -41,17 +41,25 @@ export const usePosts = (posts?: Post[]) => {
     return postsState.posts;
   }, [postsState.posts]);
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChange = (event: { target: { value: string } }) => {
     const eventValue = event.target.value as SortStatus;
 
-    if (eventValue === 'desc') {
-      dispatch(postsSlice.actions.sortDesc(postsState.posts));
-    } else if (eventValue === 'asc') {
-      dispatch(postsSlice.actions.sortAsc(postsState.posts));
-    } else if (eventValue === 'commentDesc') {
-      dispatch(postsSlice.actions.commentDesc(postsState.posts));
-    } else if (eventValue === 'commentAsc') {
-      dispatch(postsSlice.actions.commentAsc(postsState.posts));
+    switch (eventValue) {
+      case 'desc':
+        dispatch(postsSlice.actions.sortDesc(postsState.posts));
+        break;
+
+      case 'asc':
+        dispatch(postsSlice.actions.sortAsc(postsState.posts));
+        break;
+
+      case 'commentDesc':
+        dispatch(postsSlice.actions.commentDesc(postsState.posts));
+        break;
+
+      case 'commentAsc':
+        dispatch(postsSlice.actions.commentAsc(postsState.posts));
+        break;
     }
   };
 
