@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import '../../style/global.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ScrollIcon from '../components/ScrollIcon';
 import { siteConfig } from '../../config/config';
 import createStore from '../../lib/store';
 
@@ -17,6 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Header siteName={siteName} />
           <Component {...pageProps} />
           <Footer siteName={siteName} />
+          <ScrollIcon />
         </div>
       </Provider>
     </ThemeProvider>
