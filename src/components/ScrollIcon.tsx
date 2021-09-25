@@ -12,7 +12,7 @@ const ScrollIcon = () => {
 
   return (
     <button
-      className="fixed block w-10 h-auto p-2 rounded-full outline-none cursor-pointer bg-gray right-2 bottom-2 transition-all duration-500"
+      className="fixed block w-10 h-10 p-2 rounded-full outline-none cursor-pointer bg-gray right-2 bottom-2 transition-all duration-500"
       onClick={scrollTop}
     >
       <FontAwesomeIcon className="text-2xl text-white" icon={faArrowUp} />
