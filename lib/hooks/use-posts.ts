@@ -46,19 +46,27 @@ export const usePosts = (posts?: Post[]) => {
 
     switch (eventValue) {
       case 'desc':
-        dispatch(postsSlice.actions.sortDesc(postsState.posts));
+        dispatch(postsSlice.actions.sortDesc(postsState.initPosts));
         break;
 
       case 'asc':
-        dispatch(postsSlice.actions.sortAsc(postsState.posts));
+        dispatch(postsSlice.actions.sortAsc(postsState.initPosts));
         break;
 
       case 'commentDesc':
-        dispatch(postsSlice.actions.commentDesc(postsState.posts));
+        dispatch(postsSlice.actions.commentDesc(postsState.initPosts));
         break;
 
       case 'commentAsc':
-        dispatch(postsSlice.actions.commentAsc(postsState.posts));
+        dispatch(postsSlice.actions.commentAsc(postsState.initPosts));
+        break;
+
+      case 'sortReaded':
+        dispatch(postsSlice.actions.sortReaded(postsState.initPosts));
+        break;
+
+      case 'sortNotReaded':
+        dispatch(postsSlice.actions.sortNotReaded(postsState.initPosts));
         break;
     }
   };

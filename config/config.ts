@@ -21,4 +21,12 @@ export const options = [
     label: 'コメントが少ない順',
     value: 'commentAsc',
   },
+  {
+    label: '読んだ記事',
+    value: 'sortReaded',
+  },
+  {
+    label: '読んでいない記事',
+    value: 'sortNotReaded',
+  },
 ];
