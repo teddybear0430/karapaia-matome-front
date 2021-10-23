@@ -8,7 +8,7 @@ import { usePosts } from '../../lib/hooks/use-posts';
 import { dateUtil } from '../../lib/utils/date-util';
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts }) => {
-  const { siteName, siteUrl, description } = siteConfig;
+  const { siteName, siteUrl, description, maxPostCount } = siteConfig;
   const { sortedPosts } = usePosts(posts);
   const { todayDate } = dateUtil();
 
@@ -25,6 +25,9 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
         ))}
         {sortedPosts.length === 0 && (
           <p className="text-base font-bold text-red-600 dark:text-red-400">既読のついた記事はありません</p>
+        )}
+        {sortedPosts.length === maxPostCount && (
+          <p className="text-base font-bold text-red-600 dark:text-red-400">未読の記事はありません</p>
         )}
       </main>
     </>
