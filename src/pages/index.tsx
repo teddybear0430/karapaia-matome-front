@@ -23,6 +23,9 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
         {sortedPosts.map((post: Post, i: number) => (
           <PostItem key={i} post={post} />
         ))}
+        {sortedPosts.length === 0 && (
+          <p className="text-base font-bold text-red-600 dark:text-red-400">既読のついた記事はありません</p>
+        )}
       </main>
     </>
   );
