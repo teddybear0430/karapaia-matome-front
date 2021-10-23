@@ -13,6 +13,8 @@ export const usePosts = (posts?: Post[]) => {
   useEffect(() => {
     if (!posts) return;
 
+    dispatch(postsSlice.actions.setPosts(posts));
+
     // 表示されている記事リンクで既読済みの記事のuuidを格納する配列を生成
     const findReadedPosts = posts.filter((post) => post.uuid === localStorage.getItem(post.uuid));
     const findUuids = findReadedPosts.map((post) => post.uuid);
@@ -28,14 +30,7 @@ export const usePosts = (posts?: Post[]) => {
     for (const uuid of deleteUuids) {
       localStorage.removeItem(uuid);
     }
-  }, [posts]);
-
-  useEffect(() => {
-    // ソート状態が日付の降順に設定かつ、初回表示時のみ処理を実行する
-    if (sortStatus === 'desc' && posts) {
-      dispatch(postsSlice.actions.setPosts(posts));
-    }
-  }, [dispatch, sortStatus, posts]);
+  }, [dispatch, posts]);
 
   const sortedPosts = useMemo(() => {
     return postsState.posts;
