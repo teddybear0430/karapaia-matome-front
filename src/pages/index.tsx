@@ -1,13 +1,20 @@
+import React, { useState, useEffect } from 'react';
 import type { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
 import CustomHead from '../components/CustomHead';
 import SelectBox from '../components/SelectBox';
 import PostItem from '../components/Post';
-import { Post } from '../../types/post';
 import { siteConfig, options } from '../../config/config';
 import { usePosts } from '../../lib/hooks/use-posts';
 import { dateUtil } from '../../lib/utils/date-util';
+import { Post } from '../../types/post';
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts }) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const { siteName, siteUrl, description } = siteConfig;
   const { sortedPosts } = usePosts(posts);
   const { todayDate } = dateUtil();
@@ -23,8 +30,12 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
         {sortedPosts.map((post: Post, i: number) => (
           <PostItem key={i} post={post} />
         ))}
-        {posts.length === 0 && (
-          <p className="text-base font-bold text-red-600 dark:text-red-400">既読のついた記事はありません</p>
+        {mounted && (
+          <>
+            {sortedPosts.length === 0 && (
+              <p className="text-base font-bold text-red-600 dark:text-red-400">既読のついた記事はありません</p>
+            )}
+          </>
         )}
       </main>
     </>
