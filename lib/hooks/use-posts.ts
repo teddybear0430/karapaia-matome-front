@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import postsSlice from '../posts/slice';
 import { StoreState } from '../store';
@@ -9,6 +9,12 @@ export const usePosts = (posts?: Post[]) => {
   const dispatch = useDispatch();
   const postsState = useSelector((state: StoreState) => state.posts);
   const sortStatus = useSelector((state: StoreState) => state.posts.sortStatus);
+
+  // 既読・未読の投稿が0の時に文言を表示するために使用
+  const findReadedPosts = useCallback(() => {
+    if (!posts) return [];
+    return posts.filter((post) => post.uuid === localStorage.getItem(post.uuid));
+  }, [posts]);
 
   useEffect(() => {
     if (!posts) return;
@@ -67,10 +73,11 @@ export const usePosts = (posts?: Post[]) => {
   };
 
   return {
+    postsSlice,
     dispatch,
     postsState,
-    postsSlice,
     sortStatus,
+    findReadedPosts,
     sortedPosts,
     handleChange,
   };

@@ -12,12 +12,37 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // localstorage is not definedを回避するために必要
     setMounted(true);
   }, []);
 
-  const { siteName, siteUrl, description } = siteConfig;
-  const { sortedPosts } = usePosts(posts);
+  const { siteName, siteUrl, description, totalPosts } = siteConfig;
+  const { sortStatus, findReadedPosts, sortedPosts } = usePosts(posts);
   const { todayDate } = dateUtil();
+
+  const readedToggleMessage = () => {
+    if (mounted) {
+      if (sortStatus === 'sortReaded') {
+        return (
+          <>
+            {findReadedPosts().length === 0 && (
+              <p className="text-base font-bold text-red-600 dark:text-red-400">既読のついた記事はありません</p>
+            )}
+          </>
+        );
+      } else if (sortStatus === 'sortNotReaded') {
+        return (
+          <>
+            {findReadedPosts().length === totalPosts && (
+              <p className="text-base font-bold text-red-600 dark:text-red-400">未読の記事はありません</p>
+            )}
+          </>
+        );
+      }
+    }
+
+    return <></>;
+  };
 
   return (
     <>
@@ -30,13 +55,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
         {sortedPosts.map((post: Post, i: number) => (
           <PostItem key={i} post={post} />
         ))}
-        {mounted && (
-          <>
-            {sortedPosts.length === 0 && (
-              <p className="text-base font-bold text-red-600 dark:text-red-400">既読のついた記事はありません</p>
-            )}
-          </>
-        )}
+        {readedToggleMessage()}
       </main>
     </>
   );
