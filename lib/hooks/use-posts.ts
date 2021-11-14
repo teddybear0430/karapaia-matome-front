@@ -18,11 +18,8 @@ export const usePosts = (posts?: Post[]) => {
 
   // 初回表示時のみ表示された投稿のuuidとlocalStorageのuuidの差分をチェックして、
   // 消えた投稿のuuidをlocalStorageから削除する処理を行う
-  /* eslint-disable */
   useEffect(() => {
     if (!posts) return;
-
-    dispatch(postsSlice.actions.setPosts(posts));
 
     // 表示されている記事リンクで既読済みの記事のuuidを格納する配列を生成
     const findReadedPosts = posts.filter((post) => post.uuid === localStorage.getItem(post.uuid));
@@ -39,8 +36,12 @@ export const usePosts = (posts?: Post[]) => {
     for (const uuid of deleteUuids) {
       localStorage.removeItem(uuid);
     }
-  }, [posts]);
-  /* eslint-disable */
+  }, []);
+
+  useEffect(() => {
+    if (!posts) return;
+    dispatch(postsSlice.actions.setPosts(posts));
+  }, [dispatch, posts]);
 
   const sortedPosts = useMemo(() => {
     return postsState.posts;
