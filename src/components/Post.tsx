@@ -7,7 +7,11 @@ import { dateUtil } from '../../lib/utils/date-util';
 import { Post } from '../../types/post';
 import { usePost } from '../../lib/hooks/use-post';
 
-const PostItem: React.FC<{ post: Post }> = ({ post }) => {
+type Props = {
+  post: Post;
+};
+
+const PostItem: React.FC<Props> = ({ post }) => {
   const { getWeekChars } = dateUtil();
   const { readed, handleClick } = usePost(post);
 

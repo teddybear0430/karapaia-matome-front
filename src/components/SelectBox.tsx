@@ -1,12 +1,14 @@
 import React from 'react';
 import { usePosts } from '../../lib/hooks/use-posts';
 
-type Options = {
-  label: string;
-  value: string;
-}[];
+type Props = {
+  options: {
+    label: string;
+    value: string;
+  }[];
+};
 
-const SelectBox: React.FC<{ options: Options }> = ({ options }) => {
+const SelectBox: React.FC<Props> = ({ options }) => {
   const { sortStatus, handleChange } = usePosts();
 
   return (

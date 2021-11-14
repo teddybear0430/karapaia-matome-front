@@ -2,7 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import { dateUtil } from '../../lib/utils/date-util';
 
-const Footer: React.FC<{ siteName: string }> = ({ siteName }) => {
+type Props = {
+  siteName: string;
+};
+
+const Footer: React.FC<Props> = ({ siteName }) => {
   const { getYear } = dateUtil();
 
   return (

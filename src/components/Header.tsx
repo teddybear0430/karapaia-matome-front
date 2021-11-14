@@ -2,7 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import ToggleThemeMode from './ToggleThemeMode';
 
-const Header: React.FC<{ siteName: string }> = ({ siteName }) => {
+type Props = {
+  siteName: string;
+};
+
+const Header: React.FC<Props> = ({ siteName }) => {
   return (
     <header className="flex items-center justify-between mt-3 font-bold mb-9">
       <h1>
