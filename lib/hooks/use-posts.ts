@@ -16,6 +16,9 @@ export const usePosts = (posts?: Post[]) => {
     return posts.filter((post) => post.uuid === localStorage.getItem(post.uuid));
   }, [posts]);
 
+  // 初回表示時のみ表示された投稿のuuidとlocalStorageのuuidの差分をチェックして、
+  // 消えた投稿のuuidをlocalStorageから削除する処理を行う
+  /* eslint-disable */
   useEffect(() => {
     if (!posts) return;
 
@@ -36,7 +39,8 @@ export const usePosts = (posts?: Post[]) => {
     for (const uuid of deleteUuids) {
       localStorage.removeItem(uuid);
     }
-  }, [dispatch, posts]);
+  }, [posts]);
+  /* eslint-disable */
 
   const sortedPosts = useMemo(() => {
     return postsState.posts;
